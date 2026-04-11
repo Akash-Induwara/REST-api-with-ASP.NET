@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using GameStore.api.Models;
 
 namespace GameStore.api.Data
 {
@@ -11,4 +12,29 @@ namespace GameStore.api.Data
             dbContext.Database.Migrate();
         }
     }
-}
+
+    public static void AddGameStoreDb(this WebApplicationBuilder builder)
+        {
+            var connectionString = builder.Configuration.GetConnectionString("GameStoreDb");
+
+            builder.Services.AddSqlServer<GameStoreContext>(
+                connectionString,
+                optionsAction: options => options.UseSeeding((context, _) =>
+                {
+                    if (!context.Set<Genre>().Any())
+                    {
+                        context.Set<Genre>().AddRange(
+                            new Genre { Name = "Action" },
+                            new Genre { Name = "Adventure" },
+                            new Genre { Name = "RPG" },
+                            new Genre { Name = "Strategy" },
+                            new Genre { Name = "Sports" }
+                        );
+
+                        context.SaveChanges();
+                    }
+                })
+            );
+
+        }
+    }

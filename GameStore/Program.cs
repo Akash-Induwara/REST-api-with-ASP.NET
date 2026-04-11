@@ -1,11 +1,11 @@
 using GameStore.api.Data;
 using GameStore.api.Endpoints;
+using GameStore.api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("GameStoreDb");
-
-builder.Services.AddSqlServer<GameStoreContext>(connectionString);
+builder.Services.AddValidation();
+builder.AddGameStoreDb();
 
 var app = builder.Build();
 
