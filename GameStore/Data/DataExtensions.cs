@@ -11,9 +11,9 @@ namespace GameStore.api.Data
             var dbContext = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
             dbContext.Database.Migrate();
         }
-    }
 
-    public static void AddGameStoreDb(this WebApplicationBuilder builder)
+
+        public static void AddGameStoreDb(this WebApplicationBuilder builder)
         {
             var connectionString = builder.Configuration.GetConnectionString("GameStoreDb");
 
@@ -35,6 +35,6 @@ namespace GameStore.api.Data
                     }
                 })
             );
-
         }
     }
+}

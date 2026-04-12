@@ -1,10 +1,10 @@
 ﻿namespace GameStore.api.DTOs
 {
-    public record GameDto(
+    public record GameDetailsDto(
         int Id,
         string Title,
-        string Genre,
+        int GenreId,
         decimal Price,
-        DateTime ReleaseDate
+        DateOnly ReleaseDate
     );
 }

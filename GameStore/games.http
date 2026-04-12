@@ -3,17 +3,17 @@
 GET http://localhost:5086/games
 
 ###
-GET http://localhost:5086/games/6
+GET http://localhost:5086/games/
 
 ###
 POST http://localhost:5086/games
 Content-Type: application/json
 
 {
-  "title": "",
-  "genre": "Roguelike",
-  "price": 29.99,
-  "releaseDate": "2024-05-06"
+  "title": "Test Game",
+   "genreId": 3,
+   "price": 29.99,
+   "releaseDate": "2015-05-19"
 }
 
 ###
@@ -21,11 +21,14 @@ PUT http://localhost:5086/games/1
 Content-Type: application/json
 
 {
-   "title": "The Witcher 3: Wild Hunt",
-   "genre": "RPG",
-   "price": 29.99,
-   "releaseDate": "2015-05-19T00:00:00"
+   "title": "Grand Theft Auto 4",
+   "genreId": 1,
+   "price": 19.49,
+   "releaseDate": "2008-07-13"
 }
 
 ###
-DELETE http://localhost:5086/games/5
+DELETE http://localhost:5086/games/4
+
+###
+GET http://localhost:5086/genres
